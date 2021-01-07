@@ -5,7 +5,7 @@ Renews STS assumed role session for S3
 ## Installation
 
 ```
-npm install s3SessionManager
+npm install s3-session-manager
 ```
 
 ## Usage
