@@ -1,4 +1,4 @@
-# S3SessionManager
+# s3-session-manager
 
 Renews STS assumed role session for S3
 
