@@ -1,0 +1,59 @@
+{
+  "name": "s3-session-manager",
+  "version": "1.0.0",
+  "description": "Renews STS assumed role sessions for S3.",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "npm run clean && tsc",
+    "clean": "rm -fr dist/*",
+    "prepare": "npm run build",
+    "test": "mocha",
+    "posttest": "npm run lint && npm audit",
+    "lint": "tslint --project tsconfig.lint.json --format stylish",
+    "lint:fix": "tslint --project tsconfig.lint.json --format stylish --fix",
+    "coverage": "nyc mocha && nyc report --reporter=html && nyc report --reporter=json-summary",
+    "badge": "ibl-repo-badges nspragg/s3-session-manager coverage/coverage-summary.json"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nspragg/s3-session-manager.git"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nspragg/s3-session-manager/issues"
+  },
+  "homepage": "https://github.com/nspragg/s3-session-manager",
+  "devDependencies": {
+    "@types/chai": "^4.0.5",
+    "@types/mocha": "^5.2.7",
+    "@types/node": "^8.0.33",
+    "@types/sinon": "^4.0.0",
+    "chai": "^4.1.2",
+    "mocha": "^5.2.0",
+    "nyc": "^14.1.1",
+    "sinon": "^7.1.0",
+    "ts-node": "^7.0.1",
+    "tslint": "^5.8.0",
+    "tslint-microsoft-contrib": "^5.0.3",
+    "typescript": "^4.0.0"
+  },
+  "dependencies": {
+    "aws-sdk": "^2.823.0"
+  },
+  "nyc": {
+    "include": [
+      "src/**/*.ts"
+    ],
+    "extension": [
+      ".ts"
+    ],
+    "require": [
+      "ts-node/register"
+    ],
+    "sourceMap": true,
+    "instrument": true
+  },
+  "nodeVersion": ">= 8.0.0",
+  "private": true
+}

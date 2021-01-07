@@ -1,0 +1,27 @@
+{
+  "compilerOptions": {
+    "target": "es2017",
+    "module": "commonjs",
+    "outDir": "dist",
+    "sourceMap": false,
+    "moduleResolution": "node",
+    "allowJs": false,
+    "declaration": true,
+    "resolveJsonModule": true,
+    "baseUrl": "src",
+    "noUnusedLocals": true,
+    "paths": {
+      "*": [
+        "*",
+        "dist/*"
+      ]
+    }
+  },
+  "include": [
+    "src/**/*"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist"
+  ]
+}

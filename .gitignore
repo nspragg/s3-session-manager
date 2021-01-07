@@ -1,0 +1,10 @@
+node_modules
+coverage
+*.log
+.nyc_output
+*.zip
+.idea
+credentials.json
+build
+.DS_STORE
+dist
