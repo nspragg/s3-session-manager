@@ -1,9 +1,12 @@
 {
   "name": "s3-session-manager",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Renews STS assumed role sessions for S3.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "files": [
+    "dist/"
+  ],
   "scripts": {
     "build": "npm run clean && tsc",
     "clean": "rm -fr dist/*",
