@@ -4,7 +4,6 @@ coverage
 .nyc_output
 *.zip
 .idea
-credentials.json
 build
 .DS_STORE
 dist
