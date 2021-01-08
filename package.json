@@ -1,6 +1,6 @@
 {
   "name": "s3-session-manager",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "Renews STS assumed role sessions for S3.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -12,8 +12,7 @@
     "posttest": "npm run lint && npm audit",
     "lint": "tslint --project tsconfig.lint.json --format stylish",
     "lint:fix": "tslint --project tsconfig.lint.json --format stylish --fix",
-    "coverage": "nyc mocha && nyc report --reporter=html && nyc report --reporter=json-summary",
-    "badge": "ibl-repo-badges nspragg/s3-session-manager coverage/coverage-summary.json"
+    "coverage": "nyc mocha && nyc report --reporter=html && nyc report --reporter=json-summary"
   },
   "repository": {
     "type": "git",
@@ -54,6 +53,6 @@
     "sourceMap": true,
     "instrument": true
   },
-  "nodeVersion": ">= 8.0.0",
+  "nodeVersion": ">= 12.0.0",
   "private": true
 }
