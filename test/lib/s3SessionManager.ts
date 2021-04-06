@@ -20,10 +20,8 @@ describe('S3SessionManager', () => {
   beforeEach(() => {
     stsClient = new AWS.STS();
     sessionManager = new S3SessionManager({
-      roleRequest: {
-        RoleArn: 'someRole',
-        RoleSessionName: 'SessionName'
-      },
+      roleRequestArn: 'someRole',
+      sessionName: 'SessionName',
       credentialsTimeout: 1000,
       sts: stsClient
     });
@@ -64,10 +62,8 @@ describe('S3SessionManager', () => {
 
   it('returns client when current session expires', async () => {
     const sm = new S3SessionManager({
-      roleRequest: {
-        RoleArn: 'someRole',
-        RoleSessionName: 'SessionName'
-      },
+      roleRequestArn: 'someRole',
+      sessionName: 'SessionName',
       credentialsTimeout: 500,
       sts: stsClient
     });
@@ -80,5 +76,13 @@ describe('S3SessionManager', () => {
     await delay(250);
     await sm.getClient();
     sinon.assert.calledTwice(stsClientStub);
+  });
+
+  it('does not assume role if no role is given', async () => {
+    const sm = new S3SessionManager({
+      sessionName: 'SessionName'
+    });
+    const client = await sm.getClient();
+    assert.instanceOf(client, AWS.S3);
   });
 });

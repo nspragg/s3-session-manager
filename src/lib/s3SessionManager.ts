@@ -10,7 +10,8 @@ interface S3FactorySessions {
 const DEFAULT_TIMEOUT = 30 * 60 * 1000;
 
 export interface SessionParams {
-  roleRequest: STS.AssumeRoleRequest;
+  sessionName: string;
+  roleRequestArn?: string;
   sts?: STS;
   credentialsTimeout?: number;
 }
@@ -23,7 +24,10 @@ export class S3SessionManager {
 
   constructor(params: SessionParams) {
     this.sessions = {};
-    this.roleRequest = params.roleRequest;
+    this.roleRequest = {
+      RoleArn: params.roleRequestArn,
+      RoleSessionName: params.sessionName
+    };
     this.sts = params.sts || new STS();
     this.timeoutInMS = params.credentialsTimeout || DEFAULT_TIMEOUT;
   }
@@ -35,8 +39,12 @@ export class S3SessionManager {
       return session.s3Client;
     }
 
-    const credentials = await this.getCredentials(this.roleRequest);
-    session.s3Client = new S3(this.toClientConf(credentials));
+    let clientConfig;
+    if (this.roleRequest.RoleArn) {
+      const credentials = await this.getCredentials(this.roleRequest);
+      clientConfig = this.toClientConf(credentials);
+    }
+    session.s3Client = new S3(clientConfig);
     session.shouldRefreshCredentials = false;
 
     const timeout = this.timeoutInMS;

@@ -31,8 +31,9 @@
     "@types/mocha": "^5.2.7",
     "@types/node": "^8.0.33",
     "@types/sinon": "^4.0.0",
+    "aws-sdk": "^2.823.0",
     "chai": "^4.1.2",
-    "mocha": "^5.2.0",
+    "mocha": "^8.3.2",
     "nyc": "^14.1.1",
     "sinon": "^7.1.0",
     "ts-node": "^7.0.1",
@@ -43,6 +44,16 @@
   "dependencies": {},
   "peerDependencies": {
     "aws-sdk": "^2.823.0"
+  },
+  "mocha": {
+    "exit": true,
+    "recursive": true,
+    "require": "ts-node/register",
+    "full-trace": true,
+    "extension": [
+      "ts"
+    ],
+    "timeout": 5000
   },
   "nyc": {
     "include": [
