@@ -1,6 +1,6 @@
 {
   "name": "s3-session-manager",
-  "version": "0.0.3",
+  "version": "0.1.0",
   "description": "Renews STS assumed role sessions for S3.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
